@@ -1,9 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
-const Header = () => {
+const Header: React.FC = (): JSX.Element => {
   return (
     <Fragment>
       <div className="border-b-2 border-gray-100 bg-blue-400">
