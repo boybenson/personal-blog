@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  letter-spacing: 1px;
+}
+
+main {
+  min-height: 50vh;
+}
