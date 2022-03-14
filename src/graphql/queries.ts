@@ -1,15 +1,12 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_POSTS = gql`
-  query fetchPosts {
+  query {
     blogPostCollection {
       items {
         title
-        body {
-          json
-        }
-        sys {
-          id
+        featuredImage {
+          url
         }
       }
     }

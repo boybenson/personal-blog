@@ -1,25 +1,16 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { FETCH_POSTS } from "./graphql/queries";
 import { Footer } from "./components/footer/index";
 import { Header } from "./components/header/index";
 import { SideBar } from "./components/side-bar/index";
 import { SinglePost } from "./components/single-post/index";
 
-const posts = [
-  {
-    image:
-      "https://blog.ashrafkabir.com/uploads/posts/1590988017shutterstock_461354353-900x506.jpg",
-    title:
-      "Russia-Ukraine War: Phishing, Malware and Hacker Groups Taking Sides",
-  },
-  {
-    image:
-      "https://blog.ashrafkabir.com/uploads/posts/1590988017shutterstock_461354353-900x506.jpg",
-    title:
-      "Russia-Ukraine War: Phishing, Malware and Hacker Groups Taking Sides",
-  },
-];
-
 const App: React.FC = (): JSX.Element => {
+  const { data } = useQuery(FETCH_POSTS, {
+    pollInterval: 1000,
+  });
+
   return (
     <React.Fragment>
       <Header />
@@ -40,13 +31,15 @@ const App: React.FC = (): JSX.Element => {
 
       <main className="bg-gray-50 py-10">
         <section className="w-11/12 md:w-9/12 my-0 mx-auto">
-          <section className="grid grid-cols-1 md:grid-cols-3 gap-x-8">
-            <div className="col-span-2">
+          <section className="grid grid-cols-1 md:grid-cols-4 gap-x-8">
+            <div className="col-span-3">
               <div>
-                <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {posts.map((post, index) => (
-                    <SinglePost post={post} key={index} />
-                  ))}
+                <section className="grid grid-cols-1 sm:grid-cols-3  gap-4">
+                  {data?.blogPostCollection?.items.map(
+                    (post: object, index: number) => (
+                      <SinglePost post={post} key={index} />
+                    )
+                  )}
                 </section>
               </div>
             </div>

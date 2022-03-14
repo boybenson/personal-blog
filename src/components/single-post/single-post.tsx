@@ -2,8 +2,10 @@ import React from "react";
 
 type IProps = {
   post: {
-    image: string;
-    title: string;
+    title?: string;
+    featuredImage?: {
+      url: string;
+    };
   };
 };
 
@@ -11,7 +13,7 @@ const SinglePost: React.FC<IProps> = ({ post }): JSX.Element => {
   return (
     <React.Fragment>
       <div>
-        <img src={post?.image} alt="" />
+        <img src={post?.featuredImage?.url} alt="" />
         <small className="text-center">
           <p>{post?.title}</p>
         </small>
