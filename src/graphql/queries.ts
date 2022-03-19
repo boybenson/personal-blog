@@ -17,8 +17,8 @@ export const FETCH_POSTS = gql`
 `;
 
 export const FETCH_A_POST = gql`
-  query {
-    blogPost(id: "6eLI42ghBzClRafqRzE8SE") {
+  query fetchAPost($id: String!) {
+    blogPost(id: $id) {
       title
       body {
         json
