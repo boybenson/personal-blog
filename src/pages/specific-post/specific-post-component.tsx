@@ -17,8 +17,8 @@ const SpecificPostComponent: React.FC<IProps> = ({
           {loading ? (
             <h1 className="text-2xl text-center">Loading...</h1>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-x-8">
-              <div className="col-span-4">
+            <div className=" gap-x-8">
+              <div>
                 <h1 className="text-center text-lg md:text-2xl font-mono font-semibold text-gray-500 py-4">
                   {data?.blogPost.title}
                 </h1>
@@ -26,29 +26,32 @@ const SpecificPostComponent: React.FC<IProps> = ({
                   <img src={data?.blogPost.featuredImage.url} alt="" />
                 </div>
 
-                <section>
-                  {data?.blogPost?.body?.json.content.map(
-                    (content: any, index: number) => {
-                      switch (content.nodeType) {
-                        case "paragraph":
-                          return (
-                            <p
-                              key={index}
-                              className="py-2 text-md text-gray-600 text-justify"
-                            >
-                              {content.content[0].value}
-                            </p>
-                          );
+                <section className="grid grid-cols-1 md:grid-cols-4 gap-x-4 mt-4">
+                  <div className="col-span-3 ">
+                    {data?.blogPost?.body?.json.content.map(
+                      (content: any, index: number) => {
+                        switch (content.nodeType) {
+                          case "paragraph":
+                            return (
+                              <p
+                                key={index}
+                                className="py-2 text-md text-gray-600 text-justify"
+                              >
+                                {content.content[0].value}
+                              </p>
+                            );
 
-                        default:
-                          return null;
+                          default:
+                            return null;
+                        }
                       }
-                    }
-                  )}
+                    )}
+                  </div>
+
+                  <div>
+                    <SideBar />
+                  </div>
                 </section>
-              </div>
-              <div>
-                <SideBar />
               </div>
             </div>
           )}
