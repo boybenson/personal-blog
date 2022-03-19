@@ -8,6 +8,26 @@ export const FETCH_POSTS = gql`
         featuredImage {
           url
         }
+        sys {
+          id
+        }
+      }
+    }
+  }
+`;
+
+export const FETCH_A_POST = gql`
+  query {
+    blogPost(id: "6eLI42ghBzClRafqRzE8SE") {
+      title
+      body {
+        json
+      }
+      featuredImage {
+        url
+      }
+      sys {
+        id
       }
     }
   }

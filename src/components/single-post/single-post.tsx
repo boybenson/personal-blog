@@ -1,10 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 type IProps = {
   post: {
-    title?: string;
-    featuredImage?: {
-      url: string;
+    title?: string | undefined;
+    featuredImage?:
+      | {
+          url: string;
+        }
+      | undefined;
+    sys?: {
+      id: string;
     };
   };
 };
@@ -12,12 +18,14 @@ type IProps = {
 const SinglePost: React.FC<IProps> = ({ post }): JSX.Element => {
   return (
     <React.Fragment>
-      <div>
-        <img src={post?.featuredImage?.url} alt="" />
-        <small className="text-center">
-          <p>{post?.title}</p>
-        </small>
-      </div>
+      <NavLink to={`/post/${post?.sys?.id}`}>
+        <div className="shadow-md p-4 cursor-pointer rounded-lg">
+          <img src={post?.featuredImage?.url} alt="" />
+          <small className="text-center hover:underline">
+            <p>{post?.title}</p>
+          </small>
+        </div>
+      </NavLink>
     </React.Fragment>
   );
 };

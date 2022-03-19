@@ -11,7 +11,7 @@ import { Tag } from "../tag/index";
 const tagInfo = [
   { title: "Hacking" },
   { title: "Bitcoin" },
-  { title: "Software Architectures" },
+  { title: "Software" },
   { title: "Gaming" },
   { title: "Linux" },
   { title: "Security" },
